@@ -89,7 +89,7 @@ function TimerBlock({ value, label }: { value: number; label: string }) {
           {String(value).padStart(2, "0")}
         </span>
       </div>
-      <span className="text-xs md:text-sm text-orange-500 mt-2 font-golos uppercase tracking-widest font-semibold">{label}</span>
+      <span className="text-xs md:text-sm text-orange-200 mt-2 font-golos uppercase tracking-widest font-semibold">{label}</span>
     </div>
   );
 }
@@ -200,24 +200,30 @@ export default function Index() {
         </div>
       </section>
 
+      {/* DIVIDER */}
+      <div style={{ height: "6px", background: "linear-gradient(90deg, #f97316, #fbbf24, #f97316)" }} />
+
       {/* TIMER */}
-      <section className="py-12 border-y" style={{ background: "#fff8f2", borderColor: "rgba(249,115,22,0.12)" }}>
+      <section className="py-12" style={{ background: "#1a3a5c" }}>
         <div className="container mx-auto px-6 max-w-4xl text-center">
-          <p className="text-orange-500 font-oswald text-sm uppercase tracking-[4px] mb-1 font-semibold">
+          <p className="text-orange-300 font-oswald text-sm uppercase tracking-[4px] mb-1 font-semibold">
             Бесплатный доступ закрывается через
           </p>
-          <p className="text-gray-400 text-sm mb-8">После дедлайна курс станет платным</p>
+          <p className="text-blue-200 text-sm mb-8 opacity-70">После дедлайна курс станет платным</p>
           <div className="flex items-center justify-center gap-3 md:gap-8">
             <TimerBlock value={timeLeft.days} label="Дней" />
-            <span className="text-orange-400 font-oswald text-4xl font-bold pb-8">:</span>
+            <span className="text-orange-300 font-oswald text-4xl font-bold pb-8">:</span>
             <TimerBlock value={timeLeft.hours} label="Часов" />
-            <span className="text-orange-400 font-oswald text-4xl font-bold pb-8">:</span>
+            <span className="text-orange-300 font-oswald text-4xl font-bold pb-8">:</span>
             <TimerBlock value={timeLeft.minutes} label="Минут" />
-            <span className="text-orange-400 font-oswald text-4xl font-bold pb-8">:</span>
+            <span className="text-orange-300 font-oswald text-4xl font-bold pb-8">:</span>
             <TimerBlock value={timeLeft.seconds} label="Секунд" />
           </div>
         </div>
       </section>
+
+      {/* DIVIDER */}
+      <div style={{ height: "6px", background: "linear-gradient(90deg, #1a3a5c, #0077FF, #1a3a5c)" }} />
 
       {/* BENEFITS */}
       <section id="benefits" data-animate className="py-20 container mx-auto px-6 max-w-5xl">
@@ -252,8 +258,11 @@ export default function Index() {
         </div>
       </section>
 
+      {/* DIVIDER */}
+      <div style={{ height: "6px", background: "linear-gradient(90deg, #f97316, #fbbf24, #f97316)" }} />
+
       {/* METHODS */}
-      <section id="methods" data-animate className="py-20" style={{ background: "#fff8f2" }}>
+      <section id="methods" data-animate className="py-20" style={{ background: "#fff3e6" }}>
         <div className={`container mx-auto px-6 max-w-5xl transition-all duration-700 ${isVisible('methods') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="text-center mb-14">
             <p className="text-orange-500 font-oswald text-sm uppercase tracking-[4px] mb-3 font-semibold">Содержание курса</p>
@@ -299,6 +308,9 @@ export default function Index() {
         </div>
       </section>
 
+      {/* DIVIDER */}
+      <div style={{ height: "6px", background: "linear-gradient(90deg, #10b981, #fbbf24, #f97316)" }} />
+
       {/* FAQ */}
       <section id="faq" data-animate className="py-20 container mx-auto px-6 max-w-3xl">
         <div className={`transition-all duration-700 ${isVisible('faq') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
@@ -331,8 +343,11 @@ export default function Index() {
         </div>
       </section>
 
+      {/* DIVIDER */}
+      <div style={{ height: "6px", background: "linear-gradient(90deg, #1a3a5c, #0077FF, #f97316)" }} />
+
       {/* FINAL CTA */}
-      <section className="py-20 relative overflow-hidden" style={{ background: "#fff8f2" }}>
+      <section className="py-20 relative overflow-hidden" style={{ background: "#1a3a5c" }}>
         <div
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full pointer-events-none"
           style={{ background: "rgba(249,115,22,0.06)", filter: "blur(100px)" }}
@@ -341,14 +356,14 @@ export default function Index() {
           <div className="w-24 h-24 rounded-2xl mx-auto mb-8 overflow-hidden" style={{ boxShadow: "0 8px 32px rgba(249,115,22,0.2)" }}>
             <img src={IMG_ROCKET} alt="Старт" className="w-full h-full object-cover" />
           </div>
-          <h2 className="font-oswald text-4xl md:text-6xl font-bold text-gray-900 mb-4">
+          <h2 className="font-oswald text-4xl md:text-6xl font-bold text-white mb-4">
             НАЧНИ{" "}
-            <span style={{ background: "linear-gradient(135deg, #f97316, #ea580c)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+            <span style={{ background: "linear-gradient(135deg, #f97316, #fbbf24)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
               ПРЯМО
             </span>{" "}
             СЕЙЧАС
           </h2>
-          <p className="text-gray-500 text-lg mb-10 leading-relaxed">
+          <p className="text-blue-100 text-lg mb-10 leading-relaxed opacity-80">
             Получи бесплатный доступ к курсу и начни зарабатывать больше уже в этом месяце
           </p>
 
@@ -378,8 +393,8 @@ export default function Index() {
       </section>
 
       {/* Footer */}
-      <footer className="py-8 text-center border-t" style={{ borderColor: "rgba(0,0,0,0.06)" }}>
-        <p className="text-gray-400 text-sm">© 2026 · Курс «3 способа подработки для работающих пап» · Бесплатно</p>
+      <footer className="py-8 text-center" style={{ background: "#0f2540", borderTop: "1px solid rgba(255,255,255,0.08)" }}>
+        <p className="text-blue-300 text-sm opacity-60">© 2026 · Курс «3 способа подработки для работающих пап» · Бесплатно</p>
       </footer>
 
     </div>
