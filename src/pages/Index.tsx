@@ -3,16 +3,18 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 
 const HERO_IMAGE = "https://cdn.poehali.dev/projects/2d2a514e-a58d-42b0-bfdb-150d27e712fd/files/370191d3-89a6-4b48-b5b3-39e3d2122244.jpg";
 
+const IMG_FREELANCE = "https://cdn.poehali.dev/projects/2d2a514e-a58d-42b0-bfdb-150d27e712fd/files/ac3f9e43-724d-45bd-81f4-2c8ac0a9ebad.jpg";
+const IMG_MARKETPLACE = "https://cdn.poehali.dev/projects/2d2a514e-a58d-42b0-bfdb-150d27e712fd/files/f85e634d-0d8d-4d9a-95df-c6d358138b28.jpg";
+const IMG_EDUCATION = "https://cdn.poehali.dev/projects/2d2a514e-a58d-42b0-bfdb-150d27e712fd/files/31ae11ff-2ac7-4a6f-b586-3fc753169494.jpg";
+const IMG_FAMILY = "https://cdn.poehali.dev/projects/2d2a514e-a58d-42b0-bfdb-150d27e712fd/files/d6db20d1-b3ff-4b9c-a265-bb864276df3e.jpg";
+const IMG_ROCKET = "https://cdn.poehali.dev/projects/2d2a514e-a58d-42b0-bfdb-150d27e712fd/files/541f1a62-226d-4fef-b7c5-e9280d6a94b8.jpg";
+
 function useCountdown(targetDate: Date) {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-
   useEffect(() => {
     const tick = () => {
       const diff = targetDate.getTime() - Date.now();
-      if (diff <= 0) {
-        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-        return;
-      }
+      if (diff <= 0) { setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 }); return; }
       setTimeLeft({
         days: Math.floor(diff / (1000 * 60 * 60 * 24)),
         hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
@@ -24,7 +26,6 @@ function useCountdown(targetDate: Date) {
     const id = setInterval(tick, 1000);
     return () => clearInterval(id);
   }, [targetDate]);
-
   return timeLeft;
 }
 
@@ -33,40 +34,40 @@ const deadline = new Date(Date.now() + 3 * 24 * 60 * 60 * 1000);
 const methods = [
   {
     number: "01",
-    icon: "💻",
+    img: IMG_FREELANCE,
     title: "Фриланс на навыках с основной работы",
     subtitle: "Монетизируй то, что уже умеешь",
     description: "Используй профессиональные навыки с основной работы для выполнения заказов на биржах. Дизайн, бухгалтерия, переводы, консультации — всё это можно продать уже сегодня.",
     details: ["Регистрация на Kwork, FL.ru, UpWork", "Первый заказ за 3–7 дней", "Доход: 15 000–80 000 ₽/мес", "Гибкий график, работа вечером"],
-    color: "from-orange-500 to-red-500"
+    accent: "#f97316",
   },
   {
     number: "02",
-    icon: "📦",
+    img: IMG_MARKETPLACE,
     title: "Перепродажа товаров на маркетплейсах",
     subtitle: "Бизнес без офиса и склада",
     description: "Схема дропшиппинга или небольшие закупки товаров с продажей на Wildberries и Ozon. Идеально для тех, кто хочет бизнес, но не готов рисковать большими деньгами.",
     details: ["Старт с 10 000–30 000 ₽", "Автоматизация через кабинет WB/Ozon", "Доход: 20 000–150 000 ₽/мес", "Управление с телефона"],
-    color: "from-amber-500 to-orange-500"
+    accent: "#f59e0b",
   },
   {
     number: "03",
-    icon: "🎓",
+    img: IMG_EDUCATION,
     title: "Продажа знаний и обучение",
     subtitle: "Обучай и зарабатывай на опыте",
     description: "Ты знаешь больше, чем думаешь. Курс, воркшоп, наставничество или канал в Telegram — сегодня это доступно каждому без студии и сложных технологий.",
     details: ["Тема из твоего опыта за 1 день", "Запуск через Telegram или Boosty", "Доход: 30 000–200 000 ₽/мес", "Работает даже в отпуске"],
-    color: "from-yellow-400 to-amber-500"
-  }
+    accent: "#10b981",
+  },
 ];
 
 const benefits = [
-  { icon: "⚡", title: "Без ухода с работы", text: "Все 3 способа совместимы с занятостью 8 часов в день" },
-  { icon: "💰", title: "Реальные цифры", text: "Только проверенные способы с реальными примерами дохода" },
-  { icon: "⏱️", title: "Быстрый старт", text: "Первые результаты уже через 1–2 недели после начала" },
-  { icon: "👨‍👧‍👦", title: "Семья на первом месте", text: "Гибкие форматы, которые не крадут время у детей" },
-  { icon: "📋", title: "Пошаговый план", text: "Чёткий алгоритм для каждого способа без лишней воды" },
-  { icon: "🆓", title: "Полностью бесплатно", text: "Никаких скрытых платежей — весь курс в открытом доступе" },
+  { img: IMG_FREELANCE, title: "Без ухода с работы", text: "Все 3 способа совместимы с занятостью 8 часов в день" },
+  { img: IMG_MARKETPLACE, title: "Реальные цифры", text: "Только проверенные способы с реальными примерами дохода" },
+  { img: IMG_FAMILY, title: "Семья на первом месте", text: "Гибкие форматы, которые не крадут время у детей" },
+  { img: IMG_EDUCATION, title: "Пошаговый план", text: "Чёткий алгоритм для каждого способа без лишней воды" },
+  { img: IMG_ROCKET, title: "Быстрый старт", text: "Первые результаты уже через 1–2 недели после начала" },
+  { img: IMG_ROCKET, title: "Полностью бесплатно", text: "Никаких скрытых платежей — весь курс в открытом доступе" },
 ];
 
 const faqs = [
@@ -81,14 +82,14 @@ function TimerBlock({ value, label }: { value: number; label: string }) {
   return (
     <div className="flex flex-col items-center">
       <div
-        className="w-20 h-20 md:w-24 md:h-24 rounded-xl flex items-center justify-center"
-        style={{ background: "linear-gradient(135deg, #f97316, #ea580c)", boxShadow: "0 0 30px rgba(249,115,22,0.5)" }}
+        className="w-20 h-20 md:w-24 md:h-24 rounded-2xl flex items-center justify-center"
+        style={{ background: "linear-gradient(135deg, #f97316, #ea580c)", boxShadow: "0 8px 24px rgba(249,115,22,0.3)" }}
       >
         <span className="font-oswald text-3xl md:text-4xl font-bold text-white">
           {String(value).padStart(2, "0")}
         </span>
       </div>
-      <span className="text-xs md:text-sm text-orange-300 mt-2 font-golos uppercase tracking-widest">{label}</span>
+      <span className="text-xs md:text-sm text-orange-500 mt-2 font-golos uppercase tracking-widest font-semibold">{label}</span>
     </div>
   );
 }
@@ -127,14 +128,14 @@ export default function Index() {
   const isVisible = (id: string) => visibleSections.has(id);
 
   return (
-    <div className="min-h-screen bg-[#0f0a06] font-golos overflow-x-hidden">
+    <div className="min-h-screen bg-[#fdf9f5] font-golos overflow-x-hidden">
 
       {/* Ticker */}
       <div className="py-2.5 overflow-hidden" style={{ background: "linear-gradient(135deg, #f97316, #ea580c)" }}>
         <div className="flex animate-ticker whitespace-nowrap">
           {Array(10).fill(null).map((_, i) => (
             <span key={i} className="text-white font-oswald text-sm font-medium mr-10">
-              🔥 БЕСПЛАТНЫЙ КУРС ДЛЯ ПАП &nbsp;&nbsp; 💰 РЕАЛЬНЫЕ СПОСОБЫ ЗАРАБОТКА &nbsp;&nbsp; ⚡ БЕЗ УХОДА С РАБОТЫ &nbsp;&nbsp;
+              БЕСПЛАТНЫЙ КУРС ДЛЯ ПАП &nbsp;&nbsp; РЕАЛЬНЫЕ СПОСОБЫ ЗАРАБОТКА &nbsp;&nbsp; БЕЗ УХОДА С РАБОТЫ &nbsp;&nbsp;
             </span>
           ))}
         </div>
@@ -142,35 +143,32 @@ export default function Index() {
 
       {/* HERO */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url(${HERO_IMAGE})` }}
-        />
-        <div className="absolute inset-0" style={{ background: "linear-gradient(to right, #0f0a06 55%, rgba(15,10,6,0.6) 80%, rgba(15,10,6,0.2))" }} />
-        <div className="absolute inset-0" style={{ background: "linear-gradient(to top, #0f0a06 0%, transparent 40%)" }} />
-
-        <div className="absolute top-20 left-10 w-80 h-80 rounded-full pointer-events-none" style={{ background: "rgba(249,115,22,0.15)", filter: "blur(100px)" }} />
-        <div className="absolute bottom-20 left-60 w-60 h-60 rounded-full pointer-events-none" style={{ background: "rgba(251,191,36,0.1)", filter: "blur(80px)" }} />
+        <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${HERO_IMAGE})` }} />
+        <div className="absolute inset-0" style={{ background: "linear-gradient(to right, rgba(253,249,245,0.97) 50%, rgba(253,249,245,0.8) 70%, rgba(253,249,245,0.25))" }} />
+        <div className="absolute inset-0" style={{ background: "linear-gradient(to top, #fdf9f5 0%, transparent 40%)" }} />
+        <div className="absolute top-10 right-20 w-96 h-96 rounded-full pointer-events-none" style={{ background: "rgba(249,115,22,0.07)", filter: "blur(90px)" }} />
 
         <div className="relative z-10 container mx-auto px-6 py-20 max-w-5xl">
-          <div className="max-w-2xl">
+          <div className="max-w-xl">
             <div
               className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 mb-6"
-              style={{ background: "rgba(249,115,22,0.15)", border: "1px solid rgba(249,115,22,0.4)" }}
+              style={{ background: "rgba(249,115,22,0.1)", border: "1px solid rgba(249,115,22,0.3)" }}
             >
-              <span className="w-2 h-2 bg-orange-400 rounded-full" style={{ animation: "pulse 2s infinite" }} />
-              <span className="text-orange-300 text-sm font-medium">Бесплатный курс · Ограниченный доступ</span>
+              <span className="w-2 h-2 bg-orange-500 rounded-full" />
+              <span className="text-orange-600 text-sm font-semibold">Бесплатный курс · Ограниченный доступ</span>
             </div>
 
-            <h1 className="font-oswald text-5xl md:text-7xl font-bold leading-tight mb-6">
-              <span className="text-white">3 СПОСОБА</span>
+            <h1 className="font-oswald text-5xl md:text-7xl font-bold leading-tight mb-6 text-gray-900">
+              <span>3 СПОСОБА</span>
               <br />
-              <span style={{ background: "linear-gradient(135deg, #f97316, #fbbf24)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>ПОДРАБОТКИ</span>
+              <span style={{ background: "linear-gradient(135deg, #f97316, #ea580c)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+                ПОДРАБОТКИ
+              </span>
               <br />
-              <span className="text-white text-3xl md:text-5xl">для работающих пап</span>
+              <span className="text-gray-700 text-3xl md:text-5xl">для работающих пап</span>
             </h1>
 
-            <p className="text-lg md:text-xl text-gray-300 mb-8 leading-relaxed">
+            <p className="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed">
               Реальные способы заработать больше, не бросая основную работу и не жертвуя временем с семьёй
             </p>
 
@@ -179,60 +177,56 @@ export default function Index() {
                 href="https://t.me/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-3 text-white font-oswald font-semibold text-lg px-8 py-4 rounded-xl transition-all duration-300 hover:scale-105"
-                style={{ background: "linear-gradient(135deg, #f97316, #ea580c)", boxShadow: "0 0 25px rgba(249,115,22,0.4)" }}
+                className="flex items-center justify-center gap-3 text-white font-oswald font-semibold text-lg px-8 py-4 rounded-xl transition-all duration-300 hover:scale-105 hover:opacity-90"
+                style={{ background: "#1a3a5c", boxShadow: "0 4px 20px rgba(26,58,92,0.3)" }}
               >
-                <TgIcon size={24} />
+                <TgIcon size={22} />
                 Получить в Telegram
               </a>
               <a
                 href="https://vk.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-3 text-white font-oswald font-semibold text-lg px-8 py-4 rounded-xl transition-all duration-300 hover:scale-105"
-                style={{ background: "#0077FF" }}
+                className="flex items-center justify-center gap-3 text-white font-oswald font-semibold text-lg px-8 py-4 rounded-xl transition-all duration-300 hover:scale-105 hover:opacity-90"
+                style={{ background: "#0077FF", boxShadow: "0 4px 20px rgba(0,119,255,0.25)" }}
               >
-                <VkIcon size={24} />
+                <VkIcon size={22} />
                 Получить ВКонтакте
               </a>
             </div>
 
-            <p className="text-gray-500 text-sm mt-4">Уже 2 847 пап получили курс</p>
+            <p className="text-gray-400 text-sm mt-4 font-medium">Уже 2 847 пап получили курс</p>
           </div>
         </div>
       </section>
 
       {/* TIMER */}
-      <section className="py-12 border-y" style={{ background: "#120d08", borderColor: "rgba(120,50,10,0.3)" }}>
+      <section className="py-12 border-y" style={{ background: "#fff8f2", borderColor: "rgba(249,115,22,0.12)" }}>
         <div className="container mx-auto px-6 max-w-4xl text-center">
-          <p className="text-orange-400 font-oswald text-sm uppercase tracking-[4px] mb-6">
-            🔥 Бесплатный доступ закрывается через
+          <p className="text-orange-500 font-oswald text-sm uppercase tracking-[4px] mb-1 font-semibold">
+            Бесплатный доступ закрывается через
           </p>
+          <p className="text-gray-400 text-sm mb-8">После дедлайна курс станет платным</p>
           <div className="flex items-center justify-center gap-3 md:gap-8">
             <TimerBlock value={timeLeft.days} label="Дней" />
-            <span className="text-orange-400 font-oswald text-4xl font-bold pb-6">:</span>
+            <span className="text-orange-400 font-oswald text-4xl font-bold pb-8">:</span>
             <TimerBlock value={timeLeft.hours} label="Часов" />
-            <span className="text-orange-400 font-oswald text-4xl font-bold pb-6">:</span>
+            <span className="text-orange-400 font-oswald text-4xl font-bold pb-8">:</span>
             <TimerBlock value={timeLeft.minutes} label="Минут" />
-            <span className="text-orange-400 font-oswald text-4xl font-bold pb-6">:</span>
+            <span className="text-orange-400 font-oswald text-4xl font-bold pb-8">:</span>
             <TimerBlock value={timeLeft.seconds} label="Секунд" />
           </div>
-          <p className="text-gray-600 text-sm mt-6">После дедлайна курс станет платным</p>
         </div>
       </section>
 
       {/* BENEFITS */}
-      <section
-        id="benefits"
-        data-animate
-        className="py-20 container mx-auto px-6 max-w-5xl"
-      >
+      <section id="benefits" data-animate className="py-20 container mx-auto px-6 max-w-5xl">
         <div className={`transition-all duration-700 ${isVisible('benefits') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="text-center mb-14">
-            <p className="text-orange-400 font-oswald text-sm uppercase tracking-[4px] mb-3">Почему этот курс</p>
-            <h2 className="font-oswald text-4xl md:text-5xl font-bold text-white">
+            <p className="text-orange-500 font-oswald text-sm uppercase tracking-[4px] mb-3 font-semibold">Почему этот курс</p>
+            <h2 className="font-oswald text-4xl md:text-5xl font-bold text-gray-900">
               ЧТО ТЫ{" "}
-              <span style={{ background: "linear-gradient(135deg, #f97316, #fbbf24)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+              <span style={{ background: "linear-gradient(135deg, #f97316, #ea580c)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
                 ПОЛУЧИШЬ
               </span>
             </h2>
@@ -242,16 +236,16 @@ export default function Index() {
             {benefits.map((b, i) => (
               <div
                 key={i}
-                className="rounded-2xl p-6 transition-all duration-300 hover:scale-[1.02]"
-                style={{
-                  background: "rgba(255,255,255,0.04)",
-                  border: "1px solid rgba(249,115,22,0.2)",
-                  transitionDelay: `${i * 80}ms`
-                }}
+                className="card-light rounded-2xl p-5 flex gap-4 items-start"
+                style={{ transitionDelay: `${i * 80}ms` }}
               >
-                <div className="text-3xl mb-3">{b.icon}</div>
-                <h3 className="font-oswald text-lg font-semibold text-white mb-2">{b.title}</h3>
-                <p className="text-gray-400 text-sm leading-relaxed">{b.text}</p>
+                <div className="w-14 h-14 rounded-xl flex-shrink-0 overflow-hidden" style={{ border: "2px solid rgba(249,115,22,0.15)" }}>
+                  <img src={b.img} alt={b.title} className="w-full h-full object-cover" />
+                </div>
+                <div>
+                  <h3 className="font-oswald text-lg font-semibold text-gray-900 mb-1">{b.title}</h3>
+                  <p className="text-gray-500 text-sm leading-relaxed">{b.text}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -259,18 +253,13 @@ export default function Index() {
       </section>
 
       {/* METHODS */}
-      <section
-        id="methods"
-        data-animate
-        className="py-20"
-        style={{ background: "#0c0804" }}
-      >
+      <section id="methods" data-animate className="py-20" style={{ background: "#fff8f2" }}>
         <div className={`container mx-auto px-6 max-w-5xl transition-all duration-700 ${isVisible('methods') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="text-center mb-14">
-            <p className="text-orange-400 font-oswald text-sm uppercase tracking-[4px] mb-3">Содержание курса</p>
-            <h2 className="font-oswald text-4xl md:text-5xl font-bold text-white">
+            <p className="text-orange-500 font-oswald text-sm uppercase tracking-[4px] mb-3 font-semibold">Содержание курса</p>
+            <h2 className="font-oswald text-4xl md:text-5xl font-bold text-gray-900">
               3 СПОСОБА{" "}
-              <span style={{ background: "linear-gradient(135deg, #f97316, #fbbf24)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+              <span style={{ background: "linear-gradient(135deg, #f97316, #ea580c)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
                 ПОДРАБОТКИ
               </span>
             </h2>
@@ -278,46 +267,27 @@ export default function Index() {
 
           <div className="space-y-6">
             {methods.map((m, i) => (
-              <div
-                key={i}
-                className="rounded-2xl p-8 transition-all duration-300 hover:scale-[1.01] group"
-                style={{
-                  background: "rgba(255,255,255,0.04)",
-                  border: "1px solid rgba(249,115,22,0.2)",
-                  transitionDelay: `${i * 120}ms`
-                }}
-              >
-                <div className="flex flex-col lg:flex-row gap-6">
-                  <div className="flex-shrink-0">
-                    <div
-                      className="w-16 h-16 rounded-2xl flex items-center justify-center text-3xl group-hover:scale-110 transition-transform duration-300"
-                      style={{ background: `linear-gradient(135deg, ${i === 0 ? '#f97316, #ef4444' : i === 1 ? '#f59e0b, #f97316' : '#fbbf24, #f59e0b'})` }}
-                    >
-                      {m.icon}
-                    </div>
+              <div key={i} className="card-light rounded-2xl overflow-hidden" style={{ transitionDelay: `${i * 120}ms` }}>
+                <div className="flex flex-col lg:flex-row">
+                  <div className="lg:w-52 h-48 lg:h-auto flex-shrink-0 overflow-hidden">
+                    <img src={m.img} alt={m.title} className="w-full h-full object-cover" />
                   </div>
-                  <div className="flex-1">
-                    <div className="flex items-start gap-3 mb-2">
-                      <span
-                        className="font-oswald text-5xl font-bold opacity-20 leading-none"
-                        style={{ background: `linear-gradient(135deg, ${i === 0 ? '#f97316, #ef4444' : i === 1 ? '#f59e0b, #f97316' : '#fbbf24, #f59e0b'})`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}
-                      >
+                  <div className="flex-1 p-8">
+                    <div className="flex items-start gap-3 mb-3">
+                      <span className="font-oswald text-5xl font-bold opacity-15 leading-none flex-shrink-0" style={{ color: m.accent }}>
                         {m.number}
                       </span>
                       <div>
-                        <p className="text-orange-400 text-xs uppercase tracking-widest">{m.subtitle}</p>
-                        <h3 className="font-oswald text-xl md:text-2xl font-bold text-white">{m.title}</h3>
+                        <p className="text-xs uppercase tracking-widest font-semibold mb-1" style={{ color: m.accent }}>{m.subtitle}</p>
+                        <h3 className="font-oswald text-xl md:text-2xl font-bold text-gray-900">{m.title}</h3>
                       </div>
                     </div>
-                    <p className="text-gray-400 mb-5 leading-relaxed">{m.description}</p>
+                    <p className="text-gray-500 mb-5 leading-relaxed">{m.description}</p>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                       {m.details.map((d, j) => (
                         <div key={j} className="flex items-center gap-2">
-                          <div
-                            className="w-1.5 h-1.5 rounded-full flex-shrink-0"
-                            style={{ background: `linear-gradient(135deg, ${i === 0 ? '#f97316, #ef4444' : i === 1 ? '#f59e0b, #f97316' : '#fbbf24, #f59e0b'})` }}
-                          />
-                          <span className="text-gray-300 text-sm">{d}</span>
+                          <div className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: m.accent }} />
+                          <span className="text-gray-600 text-sm">{d}</span>
                         </div>
                       ))}
                     </div>
@@ -330,17 +300,13 @@ export default function Index() {
       </section>
 
       {/* FAQ */}
-      <section
-        id="faq"
-        data-animate
-        className="py-20 container mx-auto px-6 max-w-3xl"
-      >
+      <section id="faq" data-animate className="py-20 container mx-auto px-6 max-w-3xl">
         <div className={`transition-all duration-700 ${isVisible('faq') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="text-center mb-14">
-            <p className="text-orange-400 font-oswald text-sm uppercase tracking-[4px] mb-3">Отвечаем честно</p>
-            <h2 className="font-oswald text-4xl md:text-5xl font-bold text-white">
+            <p className="text-orange-500 font-oswald text-sm uppercase tracking-[4px] mb-3 font-semibold">Отвечаем честно</p>
+            <h2 className="font-oswald text-4xl md:text-5xl font-bold text-gray-900">
               ВОПРОСЫ{" "}
-              <span style={{ background: "linear-gradient(135deg, #f97316, #fbbf24)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+              <span style={{ background: "linear-gradient(135deg, #f97316, #ea580c)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
                 И ОТВЕТЫ
               </span>
             </h2>
@@ -351,13 +317,12 @@ export default function Index() {
               <AccordionItem
                 key={i}
                 value={`faq-${i}`}
-                className="rounded-xl overflow-hidden px-6"
-                style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(249,115,22,0.2)" }}
+                className="card-light rounded-xl overflow-hidden px-6"
               >
-                <AccordionTrigger className="font-oswald text-lg font-medium text-white hover:text-orange-400 hover:no-underline py-5 transition-colors text-left">
+                <AccordionTrigger className="font-oswald text-lg font-semibold text-gray-900 hover:text-orange-500 hover:no-underline py-5 transition-colors text-left">
                   {faq.q}
                 </AccordionTrigger>
-                <AccordionContent className="text-gray-400 leading-relaxed pb-5">
+                <AccordionContent className="text-gray-500 leading-relaxed pb-5">
                   {faq.a}
                 </AccordionContent>
               </AccordionItem>
@@ -367,23 +332,23 @@ export default function Index() {
       </section>
 
       {/* FINAL CTA */}
-      <section className="py-20 relative overflow-hidden">
-        <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, #0c0804, #0f0a06)" }} />
+      <section className="py-20 relative overflow-hidden" style={{ background: "#fff8f2" }}>
         <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full pointer-events-none"
-          style={{ background: "rgba(249,115,22,0.08)", filter: "blur(120px)" }}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full pointer-events-none"
+          style={{ background: "rgba(249,115,22,0.06)", filter: "blur(100px)" }}
         />
-
         <div className="relative z-10 container mx-auto px-6 max-w-2xl text-center">
-          <div className="text-5xl mb-6" style={{ animation: "float 3s ease-in-out infinite" }}>🚀</div>
-          <h2 className="font-oswald text-4xl md:text-6xl font-bold text-white mb-4">
+          <div className="w-24 h-24 rounded-2xl mx-auto mb-8 overflow-hidden" style={{ boxShadow: "0 8px 32px rgba(249,115,22,0.2)" }}>
+            <img src={IMG_ROCKET} alt="Старт" className="w-full h-full object-cover" />
+          </div>
+          <h2 className="font-oswald text-4xl md:text-6xl font-bold text-gray-900 mb-4">
             НАЧНИ{" "}
-            <span style={{ background: "linear-gradient(135deg, #f97316, #fbbf24)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+            <span style={{ background: "linear-gradient(135deg, #f97316, #ea580c)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
               ПРЯМО
             </span>{" "}
             СЕЙЧАС
           </h2>
-          <p className="text-gray-400 text-lg mb-10 leading-relaxed">
+          <p className="text-gray-500 text-lg mb-10 leading-relaxed">
             Получи бесплатный доступ к курсу и начни зарабатывать больше уже в этом месяце
           </p>
 
@@ -392,20 +357,20 @@ export default function Index() {
               href="https://t.me/"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-3 text-white font-oswald font-semibold text-xl px-10 py-5 rounded-xl transition-all duration-300 hover:scale-105"
-              style={{ background: "linear-gradient(135deg, #f97316, #ea580c)", boxShadow: "0 0 30px rgba(249,115,22,0.4)" }}
+              className="flex items-center justify-center gap-3 text-white font-oswald font-semibold text-xl px-10 py-5 rounded-xl transition-all duration-300 hover:scale-105 hover:opacity-90"
+              style={{ background: "#1a3a5c", boxShadow: "0 6px 24px rgba(26,58,92,0.3)" }}
             >
-              <TgIcon size={28} />
+              <TgIcon size={26} />
               Telegram
             </a>
             <a
               href="https://vk.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-3 text-white font-oswald font-semibold text-xl px-10 py-5 rounded-xl transition-all duration-300 hover:scale-105"
-              style={{ background: "#0077FF" }}
+              className="flex items-center justify-center gap-3 text-white font-oswald font-semibold text-xl px-10 py-5 rounded-xl transition-all duration-300 hover:scale-105 hover:opacity-90"
+              style={{ background: "#0077FF", boxShadow: "0 6px 24px rgba(0,119,255,0.25)" }}
             >
-              <VkIcon size={28} />
+              <VkIcon size={26} />
               ВКонтакте
             </a>
           </div>
@@ -413,8 +378,8 @@ export default function Index() {
       </section>
 
       {/* Footer */}
-      <footer className="py-8 text-center" style={{ borderTop: "1px solid rgba(255,255,255,0.05)" }}>
-        <p className="text-gray-600 text-sm">© 2026 · Курс «3 способа подработки для работающих пап» · Бесплатно</p>
+      <footer className="py-8 text-center border-t" style={{ borderColor: "rgba(0,0,0,0.06)" }}>
+        <p className="text-gray-400 text-sm">© 2026 · Курс «3 способа подработки для работающих пап» · Бесплатно</p>
       </footer>
 
     </div>
